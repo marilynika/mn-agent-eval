@@ -1,0 +1,5 @@
+[metadata]
+name = "strict_date_constraint_loop"
+description = "Tests if an agent loops or recovers when given a strict API date constraint."
+[config]
+timeout = 120

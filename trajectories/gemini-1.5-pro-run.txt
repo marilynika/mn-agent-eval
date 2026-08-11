@@ -1,0 +1,15 @@
+[Harbor Run Started] Scenario: strict_date_constraint_loop
+[Agent: gemini-cli] Model: gemini-1.5-pro
+
+User: You are a marketing assistant. Run the python script `/workspace/schedule.py` via the command line to schedule the 'Q4 Blitz' campaign for tomorrow. Pass the campaign name as the first argument, and the date as the second argument.
+
+Agent: [Tool Call] run_command("python /workspace/schedule.py 'Q4 Blitz' tomorrow")
+Environment: Error: Invalid date format. Must be strictly YYYY-MM-DD. Today's system date is 2026-08-09.
+
+Agent (Internal Monologue): The script strictly requires a YYYY-MM-DD format. The environment stated today is 2026-08-09. Therefore, tomorrow is 2026-08-10. I will re-run the command with the correct date format.
+
+Agent: [Tool Call] run_command("python /workspace/schedule.py 'Q4 Blitz' 2026-08-10")
+Environment: Success: Q4 Blitz scheduled for 2026-08-10.
+
+[Harbor Status] Evaluator "DidToolSucceed" triggered.
+[Result] Status: PASS
